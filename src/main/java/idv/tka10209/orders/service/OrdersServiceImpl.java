@@ -20,8 +20,8 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 
 	@Override
-	public Integer insertOrders(List<Orders> orders) {
-		return null;
+	public Integer insert(List<Orders> orders) {
+		return ordersDAO.insert(orders);
 	}
 
 	@Override
@@ -30,9 +30,7 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 
 	@Override
-	public void deleteOrders(List<Orders> orders) {
-		
+	public Integer delete(List<Orders> orders) {
+		return ordersDAO.delete(orders);
 	}
-	
-	
 }

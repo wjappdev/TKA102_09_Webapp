@@ -28,4 +28,36 @@ public class OrdersDAOImpl implements OrdersDAO {
 		return getSession().createQuery(sql, Orders.class).getResultList();
 	}
 
+	@Override
+	public Integer insert(List<Orders> orders) {
+		Session session = getSession();
+
+		for (Orders entity : orders) {
+			session.persist(entity);
+		}
+
+		session.flush(); // 讓 Hibernate 立刻送出 INSERT SQL，並把 AI 主鍵回填到 orderId
+
+		// flush 沒有丟例外的話，這裡每一筆的 orderId 都應該已經有值
+		long successCount = orders.stream()
+				.filter(o -> o.getOrderId() != null)
+				.count();
+
+		return (int) successCount;
+	}
+
+	@Override
+	public Integer delete(List<Orders> orders) {
+		Session session = getSession();
+		int successCount = 0;
+
+		for (Orders entity : orders) {
+			session.remove(entity);
+			session.flush(); // 立刻送出這一筆 DELETE，失敗只影響這一筆，不用事先多查一次
+			successCount++;
+		}
+
+		return successCount;
+	}
+
 }

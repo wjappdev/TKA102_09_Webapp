@@ -9,7 +9,11 @@
 <body>
 	<h1>這是一位後端人員作的網頁 QQ</h1>
 	<h2>員工系統</h2>
-	<a href="${pageContext.request.contextPath}/OrdersServLet?action=getAll">查詢所有員工</a>
+	<a href="${pageContext.request.contextPath}/OrdersServLet?action=getAll">查詢所有訂單</a>
+	<br><br>
+	<a href="${pageContext.request.contextPath}/OrdersServLet?action=insert">新增一筆訂單</a>
+	<br><br>
+	<a href="${pageContext.request.contextPath}/OrdersServLet?action=delete">刪除一筆訂單</a>
 	<br><br>
 	<h3><b>複合查詢 (使用 Criteria Query)：</b></h3>
 	<form action="${pageContext.request.contextPath}/OrdersServLet" method="post">
