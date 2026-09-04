@@ -28,6 +28,8 @@ import idv.tka10209.orders.service.OrdersServiceImpl;
  */
 @WebServlet("/OrdersServLet")
 public class OrdersServLet extends HttpServlet {
+	private static final String UPDATE = "update";
+
 	private static final String DELETE = "delete";
 
 	private static final String INSERT = "insert";
@@ -147,6 +149,25 @@ public class OrdersServLet extends HttpServlet {
 					response.getWriter().append("刪除失敗：找不到對應的訂單編號 (PK)");
 				}
 
+				break;
+			}
+			
+			case UPDATE: {
+				List<Orders> orders = new ArrayList<>();
+				Orders newOrders = new Orders();
+				newOrders.setOrderId(4);
+				newOrders.setOrdersStatus((byte) 5);
+				orders.add(newOrders);
+				
+				
+				try {
+					Integer count = ordersService.update(orders);
+					response.getWriter().append("成功更新 " + count + " 筆訂單");
+				} catch (Exception e) {
+					e.printStackTrace();
+					response.getWriter().append("更新失敗：找不到對應的訂單編號 (PK)");
+				}
+				
 				break;
 			}
 			default:

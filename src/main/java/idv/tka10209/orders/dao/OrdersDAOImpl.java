@@ -24,7 +24,7 @@ public class OrdersDAOImpl implements OrdersDAO {
 
 	@Override
 	public List<Orders> getAll() {
-		String sql = "SELECT O FROM Orders O JOIN FETCH O.memberId";
+		String sql = "SELECT O FROM Orders O JOIN FETCH O.memberId"; 
 		return getSession().createQuery(sql, Orders.class).getResultList();
 	}
 
@@ -55,6 +55,25 @@ public class OrdersDAOImpl implements OrdersDAO {
 			session.remove(entity);
 			session.flush(); // 立刻送出這一筆 DELETE，失敗只影響這一筆，不用事先多查一次
 			successCount++;
+		}
+
+		return successCount;
+	}
+
+	@Override
+	public Integer update(List<Orders> orders) {
+		Session session = getSession();
+		int successCount = 0;
+
+		// 用 bulk update 只改 ordersStatus 這個欄位，不會像 merge 一樣把其他欄位覆蓋成 null
+		String hql = "UPDATE Orders o SET o.ordersStatus = :status WHERE o.orderId = :id";
+
+		for (Orders entity : orders) {
+			int affected = session.createMutationQuery(hql)
+					.setParameter("status", entity.getOrdersStatus())
+					.setParameter("id", entity.getOrderId())
+					.executeUpdate();
+			successCount += affected;
 		}
 
 		return successCount;

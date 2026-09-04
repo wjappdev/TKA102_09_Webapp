@@ -25,8 +25,8 @@ public class OrdersServiceImpl implements OrdersService {
 	}
 
 	@Override
-	public Integer editOrders(List<Orders> orders) {
-		return null;
+	public Integer update(List<Orders> orders) {
+		return ordersDAO.update(orders);
 	}
 
 	@Override
