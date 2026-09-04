@@ -11,5 +11,6 @@
 		<property name="hibernate.current_session_context_class">thread</property>
 		
 		<mapping class="idv.tka10209.orders.entity.Orders"/> <!-- Mapping to entity -->
+		<mapping class="idv.tka10209.orders.entity.Member"/>
 	</session-factory>
 </hibernate-configuration>

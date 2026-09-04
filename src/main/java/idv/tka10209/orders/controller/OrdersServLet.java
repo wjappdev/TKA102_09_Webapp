@@ -51,6 +51,7 @@ public class OrdersServLet extends HttpServlet {
 		// TODO Auto-generated method stub
 //		response.getWriter().append("Served at: ")
 //		.append(request.getContextPath()).append("");
+//		response.getWriter().append(request.getParameter("action"));
 		
 		
 		//TODO: check request is valid
@@ -60,9 +61,11 @@ public class OrdersServLet extends HttpServlet {
 			PrintWriter printWriter = response.getWriter();
 			for (Orders orders : orderList) {
 				printWriter.append(orders.getOrderId().toString() + "<br>");
+				String name = orders.getMemberId().getMemberName();
+				printWriter.append(name + "<br>");
 			}
 			
-			response.getWriter().append(request.getParameter("action"));
+			
 			break;
 
 		default:

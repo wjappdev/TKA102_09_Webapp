@@ -24,8 +24,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 
 	@Override
 	public List<Orders> getAll() {
-		String sql = "Select * from Orders";
-		return getSession().createNativeQuery(sql, Orders.class).getResultList();
+		String sql = "SELECT O FROM Orders O JOIN FETCH O.memberId";
+		return getSession().createQuery(sql, Orders.class).getResultList();
 	}
 
 }

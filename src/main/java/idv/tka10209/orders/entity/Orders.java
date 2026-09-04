@@ -4,9 +4,12 @@ import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -17,8 +20,9 @@ public class Orders {
 	@Column(name = "orders_id", updatable = false)
 	private Integer orderId;
 	
-	@Column(name = "member_id")
-	private Integer memberId;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "member_id")
+	private Member memberId;
 	
 	@Column(name = "shipping_address", length = 255)
     private String shippingAddress;
@@ -73,12 +77,12 @@ public class Orders {
 		this.orderId = orderId;
 	}
 
-	public Integer getMemberId() {
+	public Member getMemberId() {
 		return memberId;
 	}
 
-	public void setMemberId(Integer memberId) {
-		this.memberId = memberId;
+	public void setMemberId(Member member) {
+		this.memberId = member;
 	}
 
 	public String getShippingAddress() {
