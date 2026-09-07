@@ -7,7 +7,7 @@
 <title>Hibernate Demo</title>
 </head>
 <body>
-	<h1>這是一位後端人員作的網頁 QQ</h1>
+	<h1>這是一位後端人員作的網頁</h1>
 	<h2>訂單系統</h2>
 	<a href="${pageContext.request.contextPath}/OrdersServLet?action=getAll">查詢所有訂單</a>
 	<br><br>

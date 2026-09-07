@@ -68,15 +68,9 @@ public class OrdersServLet extends HttpServlet {
 		switch (request.getParameter("action")) {
 			case GET_ALL: {
 				List<Orders> orderList = ordersService.getOrdersList();
-				PrintWriter printWriter = response.getWriter();
-				for (Orders orders : orderList) {
-					printWriter.append(orders.getOrderId().toString() + "<br>");
-					String name = orders.getMemberId().getMemberName();
-					printWriter.append(name + "<br>");
-				}
-	
+				request.setAttribute("orderList", orderList);
+				request.getRequestDispatcher("/orderlist.jsp").forward(request, response);
 				break;
-				
 			}
 				
 			case INSERT: {
