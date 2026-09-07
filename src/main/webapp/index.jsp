@@ -17,6 +17,15 @@
 	<br><br>
 	<a href="${pageContext.request.contextPath}/OrdersServLet?action=update">更新一筆訂單</a>
 	<br><br>
+	    <h2>上傳圖檔</h2>
+    	<form action="UploadServlet" method="post" enctype="multipart/form-data">
+        <p>選擇檔案：<input type="file" name="uploadFile" accept="image/*" required></p>
+        <p><input type="submit" value="上傳"></p>
+    </form>
+    <img src="${pageContext.request.contextPath}/upload/山水圖.jpg" width=200 height=200>
+    <br>
+    <a href="${pageContext.request.contextPath}/upload/山水圖.jpg">上傳的照片</a>
+	
 <!-- 	<h3><b>複合查詢 (使用 Criteria Query)：</b></h3> -->
 <%-- 	<form action="${pageContext.request.contextPath}/OrdersServLet" method="post"> --%>
 <!-- 		<p><label>員工名字模糊查詢：</label></p> -->
