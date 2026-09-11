@@ -3,7 +3,7 @@
 <Context>
 	
     <Resource name="jdbc/myDB" type="javax.sql.DataSource"
-        url="jdbc:mysql://localhost:3306/tka102_db?serverTimezone=Asia/Taipei"
+        url="jdbc:mysql://localhost:3306/tka10202_db?serverTimezone=Asia/Taipei"
         username="root"
         password="123456"
         driverClassName="com.mysql.cj.jdbc.Driver"

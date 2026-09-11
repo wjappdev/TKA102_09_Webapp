@@ -21,16 +21,6 @@ import jakarta.servlet.http.Part;
 public class UploadServlet extends HttpServlet {
 	private String uploadDirPath;
 
-	/**
-	 * 回傳存放上傳圖檔的目錄，並確保它存在。
-	 * <p>
-	 * 使用這個 Tomcat 執行實例的根目錄 {@code catalina.base}：
-	 * <ul>
-	 * <li>Eclipse WTP 開發時 = workspace 的 {@code .metadata\...\tmp0}（Eclipse 那顆 Tomcat 讀得到）</li>
-	 * <li>WAR 部署到獨立 Tomcat 時 = {@code catalina.home}（apache-tomcat-11.0.20）</li>
-	 * </ul>
-	 * 目錄位於 Tomcat 根目錄下、與 {@code webapps} 同一層級，名為 {@code upload}。
-	 */
 	public static File resolveUploadDir() throws ServletException {
 		String tomcatBase = System.getProperty("catalina.base");
 		if (tomcatBase == null) {
@@ -73,7 +63,6 @@ public class UploadServlet extends HttpServlet {
 		String newFileName = fileName;
 		File targetFile = new File(uploadDirPath, newFileName);
 		String filePath = targetFile.getAbsolutePath();
-//	        filePart.write(filePath);
 		try (InputStream input = filePart.getInputStream(); FileOutputStream output = new FileOutputStream(filePath)) {
 			byte[] buffer = new byte[4096];
 			int length;

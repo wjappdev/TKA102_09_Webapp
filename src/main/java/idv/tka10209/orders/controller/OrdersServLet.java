@@ -149,7 +149,7 @@ public class OrdersServLet extends HttpServlet {
 			case UPDATE: {
 				List<Orders> orders = new ArrayList<>();
 				Orders newOrders = new Orders();
-				newOrders.setOrderId(4);
+				newOrders.setOrderId(1);
 				newOrders.setOrdersStatus((byte) 5);
 				orders.add(newOrders);
 				

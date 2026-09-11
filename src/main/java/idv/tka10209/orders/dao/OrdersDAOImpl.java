@@ -24,8 +24,8 @@ public class OrdersDAOImpl implements OrdersDAO {
 
 	@Override
 	public List<Orders> getAll() {
-		String sql = "SELECT O FROM Orders O JOIN FETCH O.memberId"; 
-		return getSession().createQuery(sql, Orders.class).getResultList();
+		String hql = "SELECT O FROM Orders O JOIN FETCH O.memberId ORDER BY O.ordersId DESC"; //ordersId 要用 Hibernate define.
+		return getSession().createQuery(hql, Orders.class).getResultList();
 	}
 
 	@Override

@@ -18,7 +18,7 @@ public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "orders_id", updatable = false)
-	private Integer orderId;
+	private Integer ordersId;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "member_id")
@@ -70,11 +70,11 @@ public class Orders {
     private Integer employeeId;
 
 	public Integer getOrderId() {
-		return orderId;
+		return ordersId;
 	}
 
 	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+		this.ordersId = orderId;
 	}
 
 	public Member getMemberId() {

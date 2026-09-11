@@ -25,6 +25,13 @@
     <img src="${pageContext.request.contextPath}/upload/山水圖.jpg" width=200 height=200>
     <br>
     <a href="${pageContext.request.contextPath}/upload/山水圖.jpg">上傳的照片</a>
+    
+    <h2>上傳商品圖片</h2>
+    <form action="ProductImageServlet" method="post" enctype="multipart/form-data">
+        <p>SKU ID：<input type="number" name="skuId" required></p>
+        <p>選擇圖片：<input type="file" name="uploadFile" accept="image/*" required></p>
+        <p><input type="submit" value="上傳"></p>
+    </form>
 	
 <!-- 	<h3><b>複合查詢 (使用 Criteria Query)：</b></h3> -->
 <%-- 	<form action="${pageContext.request.contextPath}/OrdersServLet" method="post"> --%>

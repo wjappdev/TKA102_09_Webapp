@@ -12,5 +12,6 @@
 		
 		<mapping class="idv.tka10209.orders.entity.Orders"/> <!-- Mapping to entity -->
 		<mapping class="idv.tka10209.orders.entity.Member"/>
+		<mapping class="idv.tka10209.orders.entity.ProductImage"/>
 	</session-factory>
 </hibernate-configuration>
